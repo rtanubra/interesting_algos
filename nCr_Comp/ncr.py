@@ -51,27 +51,3 @@ def multiplicative_ncr(n,r):
         result = result * (n-(k-i))/i
     return result
 
-def combinations(n,k,arr =None):
-    #Specifically talking about combinations without replacement. 
-    #Efficiantly and non-destructively remove elements from an appropriate data structure
-
-    #Build my array 
-    if arr == None:
-        arr = [x for x in range(n)]
-    if n == k:
-        return arr
-    elif k == 0 :
-        return []
-        #Using an array set an index to the end of the array
-
-        #Pick an element via chosen method
-
-        #swap the two elements. (index and chosen) 
-
-        #decrement the counter
-
-        #return the switched elemnt (the chosen element)
-
-        #repeat
-
-    pass
