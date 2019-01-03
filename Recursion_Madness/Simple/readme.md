@@ -33,5 +33,10 @@ This directory wills store several recursion problems and their tests. Recursion
 
     Given base and n that are both 1 or more, compute recursively (no loops) the value of base to the n power, so powerN(3, 2) is 9 (3 squared).
 
+8. countX
+
+    Given a string, compute recursively (no loops) the number of lowercase "x" chars in the string. 
+    
+
 
  
