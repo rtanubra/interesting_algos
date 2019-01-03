@@ -5,8 +5,16 @@ the number of lowercase 'x' chars in the string
 """
 
 def problem8(my_str):
-    pass
-
+    if len(my_str) <= 1:
+        if my_str == "x":
+            return 1
+        else:
+            return 0
+    else:
+        if my_str[len(my_str)-1] == "x":
+            return 1 + problem8(my_str[0:len(my_str)-1])
+        else:
+            return problem8(my_str[0:len(my_str)-1])
 
 #Helper functions for testing
 import random
@@ -42,24 +50,21 @@ class TestProblem8(unittest.TestCase):
             self.assertEqual( implement_test(inputs[x]), outputs[x])
 
     def test_problem8_random_long(self):
-        number = random.randint(18,40)
-        word = create_random_string(number)
-        iterative = implement_test(word)
-        recursive = problem8(word)
-        print(word,"answer:",iterative,"obtained:",recursive,"\n")
-        self.assertEqual(iterative, recursive)
+        for x in range(6):
+            number = random.randint(18,40)
+            word = create_random_string(number)
+            iterative = implement_test(word)
+            recursive = problem8(word)
+            print(word,"answer:",iterative,"obtained:",recursive,"\n")
+            self.assertEqual(iterative, recursive)
     
     def test_problem8_random_short(self):
-        number = random.randint(0,10)
-        word = create_random_string(number)
-        iterative = implement_test(word)
-        recursive = problem8(word)
-        print(word,"answer:",iterative,"obtained:",recursive,"\n")
-        self.assertEqual(iterative, recursive)
+        for x in range(6):
+            number = random.randint(0,10)
+            word = create_random_string(number)
+            iterative = implement_test(word)
+            recursive = problem8(word)
+            print(word,"answer:",iterative,"obtained:",recursive,"\n")
+            self.assertEqual(iterative, recursive)
         
-    
-for x in range(20):
-    number = random.randint(3,20)
-    word = create_random_string(number)
-    print(number,word,len(word))
     
