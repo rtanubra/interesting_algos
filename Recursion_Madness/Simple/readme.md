@@ -29,14 +29,14 @@ This directory wills store several recursion problems and their tests. Recursion
 
     Given an array of ints, compute recursively if the array contains a 6. We'll use the convention of considering only the part of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
 
-7. powerN
+7. powerN - completed
 
     Given base and n that are both 1 or more, compute recursively (no loops) the value of base to the n power, so powerN(3, 2) is 9 (3 squared).
 
-8. countX
+8. countX - completed
 
     Given a string, compute recursively (no loops) the number of lowercase "x" chars in the string. 
-    
+
 
 
  
