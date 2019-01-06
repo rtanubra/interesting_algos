@@ -15,3 +15,19 @@ Again taken from codingbat.com Java section under recursion.
     groupSum6(0, [5, 6, 2], 8) → true
     groupSum6(0, [5, 6, 2], 9) → false
     groupSum6(0, [5, 6, 2], 7) → false
+
+3. groupNoAdj
+
+    Given an array of ints, is it possible to choose a group of some of the ints, such that the group sums to the given target with this additional constraint: If a value in the array is chosen to be in the group, the value immediately following it in the array must not be chosen. (No loops needed.)
+
+    groupNoAdj(0, [2, 5, 10, 4], 12) → true
+    groupNoAdj(0, [2, 5, 10, 4], 14) → false
+    groupNoAdj(0, [2, 5, 10, 4], 7) → false
+
+4. groupSum5
+
+    Given an array of ints, is it possible to choose a group of some of the ints, such that the group sums to the given target with these additional constraints: all multiples of 5 in the array must be included in the group. If the value immediately following a multiple of 5 is 1, it must not be chosen. (No loops needed.)
+
+    groupSum5(0, [2, 5, 10, 4], 19) → true
+    groupSum5(0, [2, 5, 10, 4], 17) → true
+    groupSum5(0, [2, 5, 10, 4], 12) → false
