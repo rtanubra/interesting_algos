@@ -1,5 +1,5 @@
 """
-Problem1 GroupSum:
+Problem2 GroupSum6:
 Given an array of ints, is it possible to choose a group of some of the ints, 
 such that the group sums to the given target? 
 This is a classic backtracking recursion problem. 
@@ -10,47 +10,61 @@ the array starting at index start and continuing to the end of the array.
 The caller can specify the whole array simply by passing start as 0. No loops are needed 
 -- the recursive calls progress down the array.
 
-groupSum(0, [2, 4, 8], 10) → true
-groupSum(0, [2, 4, 8], 14) → true
-groupSum(0, [2, 4, 8], 9) → false
-groupSum(start,nums,target)
+groupSum6(0, [2, 4, 8], 10) → true
+groupSum6(0, [2, 4, 8], 14) → true
+groupSum6(0, [2, 4, 8], 9) → false
+groupSum6(0, [2, 4, 8,6 ], 10) → false
+groupSum6(start,nums,target)
 """
 
-def groupSum(start,nums,target):
-    #Base case
+def groupSum6(start, nums, target):
+    #base Case
     if start >= len(nums):
-        return target == 0 
+        return target == 0
     else:
-        #Run two threads either include current number in subgroup
-        if groupSum(start+1, nums, target-nums[start]):
-            return True 
-        #Do not include current number in subgroup.
-        elif groupSum(start+1, nums, target):
-            return True
+        if nums[start] == 6:
+        #Next number is 6, pickup - True or pickup False
+            if groupSum6(start+1, nums, target-nums[start]):
+                return True
+            else:
+                return False 
         else:
-            return False
+        #Next number is not 6 : 2 choices:
+            if groupSum6(start+1, nums, target-nums[start]):
+                return True
+            elif groupSum6(start+1, nums, target):
+                return True
+            else:
+                return False
+
 
 def mini_test():
     starts = [
-        0,0,0,0,0,0
+        0,0,0,0,0,0,0,0,0,0
         ]
     nums_s = [
-        [2,4,8],[2,4,8],
+        [2,4,8],[2,4,8],[2,4,6,8],
         [2,4,8],[2,8,9],[12,13,90],
-        [2,4,8,2,8,9,12,13,90]
+        [2,4,8,2,8,9,12,13,90,6],
+        [2,4,8,6,6],[2,4,8,6],
+        [2,4,6,6,6,6,6,6]
         ]
     targets = [
-        10,14,
+        10,14,10,
         9,1,50,
-        115
+        121,
+        10,14,
+        24
         ]
     answers = [
-        True,True,
+        True,True,True,
         False,False,False,
-        True
+        True,
+        False,True,
+        False
     ]
     for x in range(len(starts)):
-        expected = groupSum(starts[x],nums_s[x],targets[x])
+        expected = groupSum6(starts[x],nums_s[x],targets[x])
         print("Testing",nums_s[x],"Target:",targets[x])
         print("Expected:",answers[x],"Obtained:",expected)
         if expected == answers[x]:
@@ -60,4 +74,5 @@ def mini_test():
             print("\nTESTING STOPPED FAILED TESTS\n")
             break  
 
-mini_test()
+#Uncomment to run mini_test
+#mini_test()
