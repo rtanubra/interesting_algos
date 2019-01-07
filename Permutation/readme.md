@@ -7,7 +7,7 @@ Looking at several examples of permutations here.
 
     -Example of nPn
 
-    -returns a containing all possible permutations of a given string. 
+    -returns a list containing all possible permutations of a given string. 
 
 3. print_permutate 
 
