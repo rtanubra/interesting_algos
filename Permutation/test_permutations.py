@@ -2,6 +2,7 @@ import unittest
 import calculating_possibilities as cs 
 from calculating_possibilities import iterative_factorial
 import permutate_string as ps 
+from print_permute import * 
 
 class TestCalculatingPossibilities(unittest.TestCase):
     
@@ -20,7 +21,8 @@ class TestCalculatingPossibilities(unittest.TestCase):
         ]
         for x in range(len(totals)):
             self.assertEqual(cs.count_permutations(totals[x],selections[x]),answers[x])
-    
+
+
 class TestPermutateString(unittest.TestCase):
     
     def helper_fx_compare_lists(self,list1,list2):
@@ -61,5 +63,6 @@ class TestPermutateString(unittest.TestCase):
             self.assertEqual(self.helper_fx_compare_lists(ps.permute(x),outputs[i]), True)
     
 
+class TestPrintPermute(unittest.TestCase):
 
-    
+    def test_choose_helper_no_duplicates(self):
