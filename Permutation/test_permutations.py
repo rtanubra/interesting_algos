@@ -103,3 +103,4 @@ class TestPrintPermute(unittest.TestCase):
             my_list = choose_helper(x,choice_length)
             self.assertEqual(my_list,"Incorrect input there are duplicate characters in 'word'.")
         print("Test complete for incorrect inputs")
+

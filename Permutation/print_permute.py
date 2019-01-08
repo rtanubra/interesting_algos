@@ -15,48 +15,19 @@ Pseudocode - implementation nCr
             choose_function(my_index, word,chosen,number_perm)
     base case
         if the length of the chosen is same as number perm return the chosen
-    else: #2 main choices, include this character or exclude this character w backtracking
-        select this letter and place in chosen explore recursively
-            BACKTRACK by removing this letter
-        elect not to place this letter into chosen explore recursively
-            BACKTRACK by removing this letter 
-REY-choose 2
-picked R
-    Picked  *
-    NOT PICKED R
-        MUST PICK RY *
-not picked 
-    MUST PICK EY *
-
-EDITH choose 3
-picked E
-    picked ED
-        picked EDI *********
-        not picked ED
-            picked EDT *******
-            not picked ED
-            MUSTPICK EDH *******
-    not picked E
-        picked EI
-            picked EIT ******
-            not picked EI
-                MUST PICK EIH ******
-        not picked E
-            MUST PICK ETH ******
-not picked 
-    picked D
-        picked DI
-        not picked D
-            MUST PICK DTH ********
-    not picked 
-"""
+    else: 
+        check if we are in a must pickup scenario 
+            -based on how many characters are left in our word and length of current chosen MUST WE PICK THIS UP
+            Must pick scenario
+                pick the character and recur
+            Not a must pick scenario
+                1.Pick character and recur
+                2.Do not pick character and recur.
 from permutate_string import permute as string_permute
 
-my_list = []
-start = 0 
-word = "reytanub"
-number_perm = 3
-chosen = ""
+Pseudocode for final print permute.
+
+"""
 
 def choose_helper(word,number_perm):
     my_choices = []
@@ -92,4 +63,3 @@ def choose_helper(word,number_perm):
 
     return my_choices
 
-print(choose_helper("REYT",2))
