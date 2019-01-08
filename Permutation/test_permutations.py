@@ -64,5 +64,42 @@ class TestPermutateString(unittest.TestCase):
     
 
 class TestPrintPermute(unittest.TestCase):
-
+    
+    def dupe_checker(self,my_list):
+        new_list = []
+        if len(my_list) != len(list(set(my_list))):
+            return False
+        else:
+            for x in my_list:
+                new_list.append( "".join(sorted(list(x))) )
+            for x in new_list:
+                if new_list.count(x) != 1:
+                    return False
+            return True
+    
     def test_choose_helper_no_duplicates(self):
+        print("Testing choose_helper for duplicates\n")
+        words = [
+            "REYT","REYT","REYT",
+            "REYTANUB","REYTANUB","REYTANUB"
+        ]
+        choice_length = [
+            2,3,4,
+            3,4,5,7
+        ]
+        for i,x in enumerate(words):
+            my_list = choose_helper(x,choice_length[i])
+            print(f"Test {i+1}, {x} subset l = {choice_length[i]}, out of {len(words)} tests")
+            self.assertEqual(self.dupe_checker(my_list),True)
+    
+    def test_choose_helper_incorrect_inputsDupeCharacters(self):
+        print("Testing choose helper for incorrect inputs\n")
+        words = [
+            "REYTT","REEYT","RERYT",
+            "REYTBANUB","REYTAANUB","REYTUANUB"
+        ]
+        choice_length =2 
+        for i,x in enumerate(words):
+            my_list = choose_helper(x,choice_length)
+            self.assertEqual(my_list,"Incorrect input there are duplicate characters in 'word'.")
+        print("Test complete for incorrect inputs")

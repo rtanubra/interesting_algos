@@ -57,8 +57,11 @@ start = 0
 word = "reytanub"
 number_perm = 3
 chosen = ""
+
 def choose_helper(word,number_perm):
     my_choices = []
+
+    #main function
     def choose_function(my_index, word,chosen,number_perm):
         #base case 
         if my_index >= len(word):
@@ -78,4 +81,15 @@ def choose_helper(word,number_perm):
                 #Option2 do not pickup
                 choose_function(my_index+1, word,chosen,number_perm)
                 return 
-choose_function(0,"reytan","",2)
+    
+    #required an input with all unique characters 
+    word_list = list(word)
+    word_set = list(set(list(word)))
+    if len(word_list) != len(word_set):
+        return "Incorrect input there are duplicate characters in 'word'."
+    else:
+        choose_function(0,word,"",number_perm)
+
+    return my_choices
+
+print(choose_helper("REYT",2))
