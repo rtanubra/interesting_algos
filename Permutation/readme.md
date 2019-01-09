@@ -9,6 +9,6 @@ Looking at several examples of permutations here.
 
     -returns a list containing all possible permutations of a given string. 
 
-3. print_permutate 
+3. print_permutate -completed
 
     -similar to permutate string but the goal here would be to print all for nPk

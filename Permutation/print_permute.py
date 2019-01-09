@@ -71,7 +71,7 @@ def print_permute(word,number_perm):
     if type(my_choices) == list:
         for choice in my_choices:
             list_to_add = string_permute(choice)
-            print(list_to_add)
+            #print(list_to_add) #Uncomment only to visualize permutation of each subset choice
             all_permutations.extend(list_to_add )
         return all_permutations
     else:

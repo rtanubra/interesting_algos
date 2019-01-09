@@ -65,6 +65,7 @@ class TestPermutateString(unittest.TestCase):
 
 class TestPrintPermute(unittest.TestCase):
     
+    #two helper functions for our tests
     def dupe_checker(self,my_list):
         new_list = []
         if len(my_list) != len(list(set(my_list))):
@@ -77,6 +78,19 @@ class TestPrintPermute(unittest.TestCase):
                     return False
             return True
     
+    def helper_fx_compare_lists(self,list1,list2):
+        #Helper function to test the equality of lists:
+        if len(list1) != len(list2):
+            return False
+        else:
+            for x in list1:
+                if x not in list2:
+                    return False
+                if list1.count(x) != list2.count(x):
+                    return False
+            return True 
+    
+    #Beginning of tests
     def test_choose_helper_no_duplicates(self):
         print("Testing choose_helper for duplicates\n")
         words = [
@@ -104,3 +118,44 @@ class TestPrintPermute(unittest.TestCase):
             self.assertEqual(my_list,"Incorrect input there are duplicate characters in 'word'.")
         print("Test complete for incorrect inputs")
 
+    def test_print_permute_incorrect_inputsDupeCharacters(self):
+        print("Testing main fx <print_permute> for incorrect inputs\n")
+        words = [
+            "REYTT","REEYT","RERYT",
+            "REYTBANUB","REYTAANUB","REYTUANUB"
+        ]
+        choice_length =2 
+        for i,x in enumerate(words):
+            my_list = print_permute(x,choice_length)
+            self.assertEqual(my_list,"Incorrect input there are duplicate characters in 'word'.")
+        print("Test complete for incorrect inputs")
+
+    def test_print_permute_no_duplicate(self):
+        print("Testing print_permute for duplicates\n")
+        words = [
+            "REYT","REYT","REYT",
+            "REYTANUB","REYTANUB","REYTANUB"
+        ]
+        choice_length = [
+            2,3,4,
+            3,4,5,7
+        ]
+        for i,x in enumerate(words):
+            my_list = print_permute(x,choice_length[i])
+            print(f"Test {i+1}, {x} subset l = {choice_length[i]}, out of {len(words)} tests")
+            self.assertEqual(len(my_list),len(set(my_list)))
+
+    def test_print_permute_set_tests(self):
+        print("Testing print_permute using set examples for thorough completeness\n")
+        words = ["REYT","EDITH"]
+        lengths = [2,2]
+        outputs = [
+            ["RE","ER","RY","YR","RT","TR","EY","YE","ET","TE","TY","YT"],
+            ["ED","DE","EI","IE","ET","TE","EH","HE","DI","ID","DT","TD","DH","HD",
+            "IT","TI","IH","HI","TH","HT"]
+        ]
+        for i,x in enumerate(words):
+            output_list = print_permute(x,lengths[i])
+            print(f"Testing {x}, length {lengths[i]} ")
+            self.assertEqual(self.helper_fx_compare_lists(output_list,outputs[i]),True)
+        print("TEST RUN COMPLETE!")
