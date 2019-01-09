@@ -23,11 +23,12 @@ Pseudocode - implementation nCr
             Not a must pick scenario
                 1.Pick character and recur
                 2.Do not pick character and recur.
-from permutate_string import permute as string_permute
 
 Pseudocode for final print permute.
 
 """
+
+from permutate_string import permute as string_permute
 
 def choose_helper(word,number_perm):
     my_choices = []
@@ -62,4 +63,17 @@ def choose_helper(word,number_perm):
         choose_function(0,word,"",number_perm)
 
     return my_choices
+
+#This is the main function for print_permute
+def print_permute(word,number_perm):
+    my_choices = choose_helper(word, number_perm)
+    all_permutations = [] 
+    if type(my_choices) == list:
+        for choice in my_choices:
+            list_to_add = string_permute(choice)
+            print(list_to_add)
+            all_permutations.extend(list_to_add )
+        return all_permutations
+    else:
+        return my_choices
 
